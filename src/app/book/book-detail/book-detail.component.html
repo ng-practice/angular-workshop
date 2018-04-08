@@ -1,5 +1,5 @@
-<div *ngIf="book">
-  <h2>{{book.title}} by <small>{{book.author}}</small></h2>
-  <h3>{{book.subtitle}}</h3>
-  <a [routerLink]="['edit']">Edit</a>
-</div>
+<book-card [book]="book" *ngIf="book$ | async as book">
+  <a mat-button routerLink="edit">
+    EDIT
+  </a>
+</book-card>

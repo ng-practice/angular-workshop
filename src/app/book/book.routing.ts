@@ -6,7 +6,6 @@ import { BookEditComponent } from './book-edit/book-edit.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookNewComponent } from './book-new/book-new.component';
 import { BookComponent } from './book.component';
-import { ConfirmCandeactivateGuardService } from './shared/confirm-candeactivate-guard.service';
 
 export const routes: Routes = [
   {

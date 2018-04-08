@@ -1,6 +1,5 @@
-<ul>
-  <li *ngFor="let book of books | async">
-    <a [routerLink]="[book.isbn]">{{book.title}}</a>
-  </li>
-</ul>
-<a [routerLink]="['new']">Add new book</a>
+<book-card [book]="book" *ngFor="let book of books | async">
+  <a mat-button [routerLink]="book.isbn">
+    DETAILS
+  </a>
+</book-card>

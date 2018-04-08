@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "prestart": "ng build models",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -25,6 +26,7 @@
     "core-js": "^2.5.4",
     "material-design-icons-iconfont": "^3.0.3",
     "normalize.css": "^8.0.0",
+    "roboto-fontface": "^0.9.0",
     "rxjs": "^6.0.0-rc.0",
     "zone.js": "^0.8.24"
   },

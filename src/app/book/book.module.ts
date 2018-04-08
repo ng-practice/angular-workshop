@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MatCardModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 
 import { BookCardComponent } from './book-card/book-card.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
@@ -21,6 +21,8 @@ import { BookDataService } from './shared/book-data.service';
     CommonModule,
     ReactiveFormsModule,
 
+    MatButtonModule,
+    MatIconModule,
     MatCardModule
   ],
   declarations: [
