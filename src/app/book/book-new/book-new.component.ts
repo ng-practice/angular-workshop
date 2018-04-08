@@ -5,17 +5,14 @@ import { BookDataService } from '../shared/book-data.service';
 
 @Component({
   selector: 'book-new',
-  templateUrl: './book-new.component.html',
-  styleUrls: ['./book-new.component.css']
+  templateUrl: './book-new.component.html'
 })
 export class BookNewComponent implements OnInit {
-
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private bookService: BookDataService) { }
+  constructor(private fb: FormBuilder, private bookService: BookDataService) {}
 
   ngOnInit() {
-
     this.form = this.fb.group({
       title: ['', Validators.required],
       author: ['', Validators.required]
@@ -23,7 +20,6 @@ export class BookNewComponent implements OnInit {
   }
 
   onSubmit() {
-
     const book: Book = {
       isbn: '',
       title: this.form.value.title,
@@ -37,7 +33,8 @@ export class BookNewComponent implements OnInit {
       }
     };
 
-    this.bookService.createBook(book)
+    this.bookService
+      .createBook(book)
       .subscribe((book: Book) => console.log('Added new book', book));
   }
 }

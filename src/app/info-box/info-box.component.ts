@@ -1,15 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'info-box',
-  templateUrl: './info-box.component.html',
-  styleUrls: ['./info-box.component.css']
+  templateUrl: './info-box.component.html'
 })
-export class InfoBoxComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class InfoBoxComponent {}
