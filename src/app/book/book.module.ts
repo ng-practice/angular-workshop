@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+import { BookDetailComponent } from './book-detail/book-detail.component';
+import { BookEditComponent } from './book-edit/book-edit.component';
+import { BookListComponent } from './book-list/book-list.component';
+import { BookNewComponent } from './book-new/book-new.component';
+import { BookRoutingModule } from './book-routing.module';
 import { BookComponent } from './book.component';
 import { BookDataService } from './shared/book-data.service';
-import { BookListComponent } from './book-list/book-list.component';
-import { BookDetailComponent } from './book-detail/book-detail.component';
-import { HttpModule } from '@angular/http';
-import { BookRoutingModule } from './book-routing.module';
 import { ConfirmCandeactivateGuardService } from './shared/confirm-candeactivate-guard.service';
-import { BookEditComponent } from './book-edit/book-edit.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BookNewComponent } from './book-new/book-new.component';
-
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { BookNewComponent } from './book-new/book-new.component';
     HttpModule,
     FormsModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     BookComponent,
