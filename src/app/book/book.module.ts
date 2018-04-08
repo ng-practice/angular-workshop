@@ -7,8 +7,8 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookNewComponent } from './book-new/book-new.component';
-import { BookRoutingModule } from './book-routing.module';
 import { BookComponent } from './book.component';
+import { BookRoutingModule } from './book.routing';
 import { BookDataService } from './shared/book-data.service';
 import { ConfirmCandeactivateGuardService } from './shared/confirm-candeactivate-guard.service';
 
