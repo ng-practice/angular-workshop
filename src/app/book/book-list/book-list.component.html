@@ -1,5 +1,6 @@
-<book-card [book]="book" *ngFor="let book of books | async">
+<book-card [book]="book" *ngFor="let book of books$ | async">
   <a mat-button [routerLink]="book.isbn">
     DETAILS
   </a>
+  <button mat-button (click)="removeBook(book)">REMOVE</button>
 </book-card>

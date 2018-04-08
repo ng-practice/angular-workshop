@@ -1,9 +1,13 @@
 <h2 class="mat-h2">ADD NEW BOOK</h2>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <input type="text" formControlName="title" /><br />
-  <span [hidden]="!form.get('title').hasError('required')">Title is required</span><br />
-  <input type="text" formControlName="author" /><br />
-  <span [hidden]="!form.get('author').hasError('required')">Author is required</span><br />
+  <input type="text" formControlName="isbn"><br>
+  <span [hidden]="!form.get('isbn').hasError('required')">ISBN is required</span><br>
+
+  <input type="text" formControlName="title"><br>
+  <span [hidden]="!form.get('title').hasError('required')">Title is required</span><br>
+
+  <input type="text" formControlName="author"><br>
+  <span [hidden]="!form.get('author').hasError('required')">Author is required</span><br>
   <button
     mat-raised-button
     [disabled]="form.invalid">

@@ -15,6 +15,7 @@ export class BookNewComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
+      isbn: ['', Validators.required],
       title: ['', Validators.required],
       author: ['', Validators.required]
     });
@@ -22,7 +23,7 @@ export class BookNewComponent implements OnInit {
 
   onSubmit() {
     const book: Book = {
-      isbn: '',
+      isbn: this.form.value.isbn,
       title: this.form.value.title,
       author: this.form.value.author,
       subtitle: '',
@@ -36,6 +37,6 @@ export class BookNewComponent implements OnInit {
 
     this.bookService
       .createBook(book)
-      .subscribe((book: Book) => console.log('Added new book', book));
+      .subscribe();
   }
 }
