@@ -17,7 +17,8 @@ export class BookNewComponent implements OnInit {
     this.form = this.fb.group({
       isbn: ['', Validators.required],
       title: ['', Validators.required],
-      author: ['', Validators.required]
+      author: ['', Validators.required],
+      abstract: ['', Validators.required]
     });
   }
 
@@ -27,8 +28,8 @@ export class BookNewComponent implements OnInit {
       title: this.form.value.title,
       author: this.form.value.author,
       subtitle: '',
-      abstract: '',
-      numPages: 123,
+      abstract: this.form.value.abstract,
+      numPages: 0,
       publisher: {
         name: '',
         url: ''
