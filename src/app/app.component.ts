@@ -4,11 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent {
-  title = 'app works!';
-
-  onTitleClicked($event) {
-
-    console.log($event);
-  }
-}
+export class AppComponent {}
