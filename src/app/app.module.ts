@@ -7,11 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { LayoutModule } from './layout/layout.module';
-import { ShoutPipe } from './shared/shout.pipe';
-import { TooltipDirective } from './shared/tooltip.directive';
 
 @NgModule({
-  declarations: [AppComponent, ShoutPipe, TooltipDirective],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
