@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../shared/book';
+import { Book } from 'models';
 import { BookDataService } from '../shared/book-data.service';
 import { Observable } from 'rxjs';
 

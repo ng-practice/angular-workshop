@@ -24,7 +24,6 @@ export const routes: Routes = [
       {
         path: ':isbn',
         component: BookDetailComponent,
-        canDeactivate: [ConfirmCandeactivateGuardService]
       },
       {
         path: ':isbn/edit',

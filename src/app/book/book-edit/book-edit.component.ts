@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../shared/book';
+import { Book } from 'models';
 import { ActivatedRoute } from '@angular/router';
 import { BookDataService } from '../shared/book-data.service';
 import { mergeMap } from 'rxjs/operators';
