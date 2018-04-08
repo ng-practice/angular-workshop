@@ -5,7 +5,8 @@ import { BookDataService } from '../shared/book-data.service';
 
 @Component({
   selector: 'book-new',
-  templateUrl: './book-new.component.html'
+  templateUrl: './book-new.component.html',
+  styleUrls: ['./book-new.component.scss']
 })
 export class BookNewComponent implements OnInit {
   form: FormGroup;
