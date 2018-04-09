@@ -202,6 +202,12 @@
   dependencies:
     tslib "^1.9.0"
 
+"@netbasal/spectator@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@netbasal/spectator/-/spectator-1.0.0.tgz#6b59cf5a23e13c098f119b9a761f81db913481ac"
+  dependencies:
+    jquery "^3.3.1"
+
 "@ngtools/json-schema@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.1.0.tgz#c3a0c544d62392acc2813a42c8a0dc6f58f86922"
@@ -3453,6 +3459,10 @@ jasmine@2.8.0:
 jasminewd2@^2.1.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/jasminewd2/-/jasminewd2-2.2.0.tgz#e37cf0b17f199cce23bea71b2039395246b4ec4e"
+
+jquery@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 
 js-base64@^2.1.8:
   version "2.4.3"
