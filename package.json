@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
+    "cypress:ci": "cypress run",
     "cypress:ui": "cypress open",
     "ng": "ng",
     "prestart": "ng build models",
