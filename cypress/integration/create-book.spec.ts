@@ -15,18 +15,12 @@ describe('Creating a new book', () => {
       .then(_ => click('.mat-raised-button', /create/i))
       .then(_ => fillForm(isbn))
       .then(_ => click('.mat-raised-button', /save/i))
-      .then(_ => cy.visit('http://localhost:4200'))
+      .then(_ => cy.go('back'))
       .then(_ => cy.get('@books'))
       .then(books => expect(books.length).eq(booksCountBefore + 1));
   });
 
-  afterEach(() =>
-    cy
-      .get('@books')
-      .last()
-      .find('button')
-      .click()
-  );
+  afterEach(() => cy.request('DELETE', `http://localhost:4730/books/${isbn}`));
 });
 
 function fillForm(isbn: string) {
@@ -44,7 +38,7 @@ function fillForm(isbn: string) {
 
 function click(selector: string, textContent: RegExp) {
   return cy
-  .get(selector)
-  .contains(textContent)
-  .click();
+    .get(selector)
+    .contains(textContent)
+    .click();
 }
