@@ -18,6 +18,8 @@ import { BookNewComponent } from './book-new/book-new.component';
 import { BookComponent } from './book.component';
 import { BookRoutingModule } from './book.routing';
 import { BookDataService } from './shared/book-data.service';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import { BookDataService } from './shared/book-data.service';
     MatCardModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+
+    StoreModule.forFeature('bookShelf', reducers)
   ],
   declarations: [
     BookComponent,
