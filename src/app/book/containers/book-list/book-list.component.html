@@ -1,3 +1,7 @@
+<ng-container *ngIf="hasFailed$ | async">
+  Error was thrown.
+</ng-container>
+
 <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
 
 <book-card [book]="book" *ngFor="let book of books$ | async">

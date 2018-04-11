@@ -4,7 +4,8 @@ import { Book } from 'models';
 export enum BookCollectionActionTypes {
   Log = '[Book-Collection] Log',
   Load = '[Book-Collection] Load books',
-  LoadSuccess = '[Book-Collection] Loading books succeeded'
+  LoadSuccess = '[Book-Collection] Loading books succeeded',
+  LoadError = '[Book-Collection] Loading books failed'
 }
 
 export class Log implements Action {
@@ -21,4 +22,10 @@ export class LoadSuccess implements Action {
   constructor(public payload: Book[]) {}
 }
 
-export type BookCollectionActions = Log | Load | LoadSuccess;
+export class LoadError implements Action {
+  readonly type = BookCollectionActionTypes.LoadError;
+
+  constructor(public payload: Error) {}
+}
+
+export type BookCollectionActions = Log | Load | LoadSuccess | LoadError;

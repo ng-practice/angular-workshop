@@ -9,12 +9,16 @@ export interface BookSlice {
   // Communication State
   isLoading: boolean;
   isLoaded: boolean;
+  hasFailed: boolean;
+  error: Error;
 }
 
 const initialSlice: BookSlice = {
   all: [],
   isLoading: false,
-  isLoaded: false
+  isLoaded: false,
+  hasFailed: false,
+  error: {} as Error
 };
 
 export function reducer(slice = initialSlice, action: BookCollectionActions) {
@@ -33,6 +37,13 @@ export function reducer(slice = initialSlice, action: BookCollectionActions) {
         isLoaded: true,
         isLoading: false,
         all: action.payload
+      };
+    case BookCollectionActionTypes.LoadError:
+      return {
+        ...slice,
+        isLoading: false,
+        hasFailed: true,
+        error: action.payload
       };
     default:
       return slice;

@@ -1,4 +1,8 @@
-import { ActionReducerMap } from '@ngrx/store';
+import {
+  ActionReducerMap,
+  createSelector,
+  createFeatureSelector
+} from '@ngrx/store';
 
 import * as fromRoot from '../../reducers';
 import * as fromBook from './book-collection.reducer';
@@ -16,3 +20,20 @@ export interface State extends fromRoot.State {
 export const reducers: ActionReducerMap<BookState> = {
   books: fromBook.reducer
 };
+
+/**
+ * {
+ *  -> bookShelf: {
+ *      books: {
+ *        -> all: []
+ *      }
+ *    }
+ *
+ */
+
+export const visitBookShelf = createFeatureSelector<BookState>('bookShelf');
+
+export const selectAll = createSelector(
+  visitBookShelf,
+  slice => slice.books.all
+);

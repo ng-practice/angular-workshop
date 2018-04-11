@@ -15,6 +15,7 @@ import { Log, Load } from '../../actions/book-collection.actions';
   styles: ['mat-spinner { margin-left: auto; margin-right: auto; }']
 })
 export class BookListComponent implements OnInit {
+  hasFailed$: Observable<boolean>;
   isLoading$: Observable<boolean>;
   books$: Observable<Book[]>;
 
@@ -22,8 +23,9 @@ export class BookListComponent implements OnInit {
     private _store: Store<fromBook.State>,
     private bookService: BookDataService
   ) {
+    this.hasFailed$ = _store.pipe(select(s => s.bookShelf.books.hasFailed));
     this.isLoading$ = _store.pipe(select(s => s.bookShelf.books.isLoading));
-    this.books$ = _store.pipe(select(s => s.bookShelf.books.all));
+    this.books$ = _store.pipe(select(fromBook.selectAll));
   }
 
   ngOnInit() {
