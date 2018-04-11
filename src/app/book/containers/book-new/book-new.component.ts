@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Book } from 'models';
 
 import { BookDataService } from '../../shared/book-data.service';
@@ -15,12 +15,14 @@ export class BookNewComponent implements OnInit {
   constructor(private fb: FormBuilder, private bookService: BookDataService) {}
 
   ngOnInit() {
-    this.form = this.fb.group({
-      isbn: ['', Validators.required],
-      title: ['', Validators.required],
-      author: ['', Validators.required],
-      abstract: ['', Validators.required]
-    });
+    this.form = new FormGroup({
+      isbn:  new FormControl('', Validators.required),
+      title: new FormControl('', Validators.required),
+      author: new FormControl('', Validators.required),
+      abstract: new FormControl('', Validators.required)
+    }, { updateOn: 'blur' });
+
+    this.form.valueChanges.subscribe(console.info);
   }
 
   onSubmit() {
