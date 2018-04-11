@@ -4,17 +4,28 @@ import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 import { BookDataService } from '../../shared/book-data.service';
+import { Store, select } from '@ngrx/store';
+
+import * as fromBook from '../../reducers';
+import { Log, Load } from '../../actions/book-collection.actions';
 
 @Component({
   selector: 'book-list',
   templateUrl: 'book-list.component.html'
 })
 export class BookListComponent implements OnInit {
+  isLoading$: Observable<boolean>;
   books$: Observable<Book[]>;
 
-  constructor(private bookService: BookDataService) {}
+  constructor(
+    private _store: Store<fromBook.State>,
+    private bookService: BookDataService
+  ) {
+    this.isLoading$ = _store.pipe(select(s => s.bookShelf.books.isLoading));
+  }
 
   ngOnInit() {
+    this._store.dispatch(new Load());
     this.books$ = this.bookService.getBooks();
   }
 

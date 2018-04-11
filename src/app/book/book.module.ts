@@ -7,7 +7,8 @@ import {
   MatCardModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule
+  MatInputModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import { BookCardComponent } from './components/book-card/book-card.component';
@@ -34,6 +35,7 @@ import { reducers } from './reducers';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatProgressSpinnerModule,
 
     StoreModule.forFeature('bookShelf', reducers)
   ],

@@ -1,21 +1,36 @@
 import { Book } from 'models';
-import { Action } from '@ngrx/store';
+
+import { BookCollectionActions, BookCollectionActionTypes } from '../actions/book-collection.actions';
+
 
 export interface BookSlice {
+  // Data State
   all: Book[];
+  // Communication State
+  isLoading: boolean;
+  isLoaded: boolean;
 }
 
 const initialSlice: BookSlice = {
-  all: []
+  all: [],
+  isLoading: false,
+  isLoaded: false
 };
 
-export function reducer(slice = initialSlice, action: Action) {
+export function reducer(slice = initialSlice, action: BookCollectionActions) {
   switch (action.type) {
-    case 'LOG':
+    case BookCollectionActionTypes.Log:
       console.log('Hit');
+      return slice;
+    case BookCollectionActionTypes.Load:
       return {
         ...slice,
-        all: [...slice.all, {} as Book]
+        isLoading: true
+      };
+    case BookCollectionActionTypes.LoadSuccess:
+      return {
+        ...slice,
+        all: action.payload
       };
     default:
       return slice;
