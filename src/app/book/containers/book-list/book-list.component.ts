@@ -3,7 +3,7 @@ import { Book } from 'models';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
-import { BookDataService } from '../shared/book-data.service';
+import { BookDataService } from '../../shared/book-data.service';
 
 @Component({
   selector: 'book-list',

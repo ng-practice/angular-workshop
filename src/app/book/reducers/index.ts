@@ -1,6 +1,7 @@
-import * as fromRoot from '../../reducers';
-import * as fromBook from './book.reducer';
 import { ActionReducerMap } from '@ngrx/store';
+
+import * as fromRoot from '../../reducers';
+import * as fromBook from './book-collection.reducer';
 
 // API store.bookshelf.books.all -> Book[]
 export interface BookState {

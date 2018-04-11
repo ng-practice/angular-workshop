@@ -13,7 +13,10 @@ export function reducer(slice = initialSlice, action: Action) {
   switch (action.type) {
     case 'LOG':
       console.log('Hit');
-      return slice;
+      return {
+        ...slice,
+        all: [...slice.all, {} as Book]
+      };
     default:
       return slice;
   }

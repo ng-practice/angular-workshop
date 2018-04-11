@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Book } from 'models';
-import { BookDataService } from '../shared/book-data.service';
+
+import { BookDataService } from '../../shared/book-data.service';
 
 @Component({
   selector: 'book-new',

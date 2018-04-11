@@ -10,11 +10,11 @@ import {
   MatInputModule
 } from '@angular/material';
 
-import { BookCardComponent } from './book-card/book-card.component';
-import { BookDetailComponent } from './book-detail/book-detail.component';
-import { BookEditComponent } from './book-edit/book-edit.component';
-import { BookListComponent } from './book-list/book-list.component';
-import { BookNewComponent } from './book-new/book-new.component';
+import { BookCardComponent } from './components/book-card/book-card.component';
+import { BookDetailComponent } from './containers/book-detail/book-detail.component';
+import { BookEditComponent } from './containers/book-edit/book-edit.component';
+import { BookListComponent } from './containers/book-list/book-list.component';
+import { BookNewComponent } from './containers/book-new/book-new.component';
 import { BookComponent } from './book.component';
 import { BookRoutingModule } from './book.routing';
 import { BookDataService } from './shared/book-data.service';
