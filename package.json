@@ -6,7 +6,7 @@
     "cypress:ci": "cypress run",
     "cypress:ui": "cypress open",
     "ng": "ng",
-    "prestart": "ng build models",
+    "prestart": "ng build models && ng build g-rab",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -14,11 +14,11 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/common": "^6.0.0-rc.3",
+    "@angular/core": "^6.0.0-rc.3",
+    "@angular/compiler": "^6.0.0-rc.3",
     "@angular/animations": "^6.0.0-rc.3",
     "@angular/cdk": "^6.0.0-rc.1",
-    "@angular/common": "^6.0.0-rc.3",
-    "@angular/compiler": "^6.0.0-rc.3",
-    "@angular/core": "^6.0.0-rc.3",
     "@angular/forms": "^6.0.0-rc.3",
     "@angular/http": "^6.0.0-rc.3",
     "@angular/material": "^6.0.0-rc.1",
@@ -34,13 +34,18 @@
     "normalize.css": "^8.0.0",
     "roboto-fontface": "^0.9.0",
     "rxjs": "^6.0.0-rc.0",
-    "zone.js": "^0.8.24"
+    "zone.js": "^0.8.24",
+    "@angular/platform-server": "^6.0.0-rc.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.5.5",
-    "@angular-devkit/build-ng-packagr": "^0.5.5",
-    "@angular/cli": "~6.0.0-rc.3",
     "@angular/compiler-cli": "^6.0.0-rc.3",
+    "@angular-devkit/build-ng-packagr": "^0.5.5",
+    "@angular-devkit/build-angular": "^0.5.5",
+    "ng-packagr": "^2.4.2",
+    "tsickle": ">=0.25.5",
+    "tslib": "^1.7.1",
+    "typescript": "~2.7.1",
+    "@angular/cli": "~6.0.0-rc.3",
     "@angular/language-service": "^6.0.0-rc.3",
     "@bahmutov/add-typescript-to-cypress": "^2.0.0",
     "@netbasal/spectator": "^1.2.0",
@@ -58,13 +63,9 @@
     "karma-coverage-istanbul-reporter": "^1.4.2",
     "karma-jasmine": "^1.1.1",
     "karma-jasmine-html-reporter": "^1.0.0",
-    "ng-packagr": "^2.4.2",
     "ngrx-store-freeze": "^0.2.2",
     "protractor": "~5.3.0",
     "ts-node": "~5.0.1",
-    "tsickle": ">=0.25.5",
-    "tslib": "^1.7.1",
-    "tslint": "^5.9.1",
-    "typescript": "~2.7.1"
+    "tslint": "^5.9.1"
   }
 }

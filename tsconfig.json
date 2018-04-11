@@ -19,6 +19,9 @@
     "paths": {
       "models": [
         "dist/models"
+      ],
+      "g-rab": [
+        "dist/g-rab"
       ]
     }
   }
