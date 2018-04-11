@@ -2,8 +2,20 @@ import { Action } from '@ngrx/store';
 import { Book } from 'models';
 
 export enum SelectedBookActionTypes {
-  Load = '[Book] Load',
+  Draft = '[Book] New Draft created',
+  UndoDraft = '[Book] Undo last Draft',
+  Load = '[Book] Load single book',
   LoadSuccess = '[Book] Load single Book succeeded'
+}
+
+export class Draft implements Action {
+  readonly type = SelectedBookActionTypes.Draft;
+
+  constructor(public payload: Book) {}
+}
+
+export class UndoDraft implements Action {
+  readonly type = SelectedBookActionTypes.UndoDraft;
 }
 
 export class Load implements Action {
@@ -18,4 +30,4 @@ export class LoadSuccess implements Action {
   constructor(public payload: Book) {}
 }
 
-export type SelectedBookActions = Load | LoadSuccess;
+export type SelectedBookActions = Draft | UndoDraft | Load | LoadSuccess;

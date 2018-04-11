@@ -24,6 +24,7 @@ export class EnsureBookExist implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     const isbn = route.paramMap.get('isbn');
+
     return this._store.pipe(
       select(s => s.bookShelf.selectedBook.isLoaded),
       map(isLoaded => {

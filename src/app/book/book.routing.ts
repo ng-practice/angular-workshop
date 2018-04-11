@@ -28,7 +28,8 @@ export const routes: Routes = [
       },
       {
         path: ':isbn/edit',
-        component: BookEditComponent
+        component: BookEditComponent,
+        canActivate: [EnsureBookExist]
       }
     ]
   }

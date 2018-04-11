@@ -1,15 +1,20 @@
 <h2 class="mat-h2">EDIT BOOK</h2>
-<div *ngIf="book">
+<div *ngIf="book$ | async as book">
   <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
-    <input type="text" name="isbn" #isbn="ngModel" [(ngModel)]="book.isbn" required/><br />
-    <span [hidden]="!isbn.errors?.required">ISBN is required</span><br />
-    <input type="text" name="title" #title="ngModel" [(ngModel)]="book.title" required/><br />
-    <span [hidden]="!title.errors?.required">Title is required</span><br />
-    <input type="text" name="author" #author="ngModel" [(ngModel)]="book.author" required/><br />
-    <span [hidden]="!author.errors?.required">Author is required</span><br />
-    <button
-      mat-raised-button
-      [disabled]="form.invalid"
-      type="submit">SAVE</button>
+    <input type="text" name="isbn" #isbn="ngModel" [ngModel]="book.isbn" required>
+    <br />
+    <span [hidden]="!isbn.errors?.required">ISBN is required</span>
+    <br />
+    <input type="text" name="title" #title="ngModel" [ngModel]="book.title" required>
+    <br />
+    <span [hidden]="!title.errors?.required">Title is required</span>
+    <br />
+    <input type="text" name="author" #author="ngModel" [ngModel]="book.author" required>
+    <br />
+    <span [hidden]="!author.errors?.required">Author is required</span>
+    <br />
+    <button mat-raised-button type="button" (click)="commit(form.value)">Commit</button>
+    <button mat-raised-button type="button" (click)="undo()">Undo</button>
+    <button mat-raised-button [disabled]="form.invalid" type="submit">SAVE</button>
   </form>
 </div>
