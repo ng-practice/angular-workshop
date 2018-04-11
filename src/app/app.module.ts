@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { LayoutModule } from './layout/layout.module';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './reducers';
 
@@ -21,6 +22,7 @@ import { reducers, metaReducers } from './reducers';
     LayoutModule,
 
     StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument(),
     AppRoutingModule
   ],

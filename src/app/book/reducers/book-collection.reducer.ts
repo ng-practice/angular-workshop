@@ -30,6 +30,8 @@ export function reducer(slice = initialSlice, action: BookCollectionActions) {
     case BookCollectionActionTypes.LoadSuccess:
       return {
         ...slice,
+        isLoaded: true,
+        isLoading: false,
         all: action.payload
       };
     default:

@@ -11,7 +11,8 @@ import { Log, Load } from '../../actions/book-collection.actions';
 
 @Component({
   selector: 'book-list',
-  templateUrl: 'book-list.component.html'
+  templateUrl: 'book-list.component.html',
+  styles: ['mat-spinner { margin-left: auto; margin-right: auto; }']
 })
 export class BookListComponent implements OnInit {
   isLoading$: Observable<boolean>;
@@ -22,11 +23,11 @@ export class BookListComponent implements OnInit {
     private bookService: BookDataService
   ) {
     this.isLoading$ = _store.pipe(select(s => s.bookShelf.books.isLoading));
+    this.books$ = _store.pipe(select(s => s.bookShelf.books.all));
   }
 
   ngOnInit() {
     this._store.dispatch(new Load());
-    this.books$ = this.bookService.getBooks();
   }
 
   removeBook(book: Book) {

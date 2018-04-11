@@ -10,17 +10,19 @@ import {
   MatInputModule,
   MatProgressSpinnerModule
 } from '@angular/material';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
+import { BookComponent } from './book.component';
+import { BookRoutingModule } from './book.routing';
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { BookDetailComponent } from './containers/book-detail/book-detail.component';
 import { BookEditComponent } from './containers/book-edit/book-edit.component';
 import { BookListComponent } from './containers/book-list/book-list.component';
 import { BookNewComponent } from './containers/book-new/book-new.component';
-import { BookComponent } from './book.component';
-import { BookRoutingModule } from './book.routing';
-import { BookDataService } from './shared/book-data.service';
-import { StoreModule } from '@ngrx/store';
+import { BookCollectionEffects } from './effects/book-collection.effects';
 import { reducers } from './reducers';
+import { BookDataService } from './shared/book-data.service';
 
 @NgModule({
   imports: [
@@ -37,7 +39,8 @@ import { reducers } from './reducers';
     MatInputModule,
     MatProgressSpinnerModule,
 
-    StoreModule.forFeature('bookShelf', reducers)
+    StoreModule.forFeature('bookShelf', reducers),
+    EffectsModule.forFeature([BookCollectionEffects])
   ],
   declarations: [
     BookComponent,
