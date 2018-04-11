@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Inject } from '@angular/core';
-import { Observable } from 'rxjs';
-
+import { Inject, Injectable } from '@angular/core';
 import { Book } from 'models';
+import { Observable } from 'rxjs';
 
 import { APP_CONFIG_TOKEN, AppConfig } from '../../core/app.config';
 
@@ -14,22 +13,22 @@ export class BookDataService {
   ) {}
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this._config.apiEndpoint + '/books');
+    return this.http.get<Book[]>(`${this._config.apiEndpoint}/books`);
   }
 
   getBookByIsbn(isbn: string): Observable<Book> {
-    return this.http.get<Book>(`http://localhost:4730/books/${isbn}`);
+    return this.http.get<Book>(`${this._config.apiEndpoint}/books/${isbn}`);
   }
 
   createBook(book: Book): Observable<Book> {
-    return this.http.post<Book>('http://localhost:4730/books', book);
+    return this.http.post<Book>(`${this._config.apiEndpoint}/books`, book);
   }
 
   updateBook(isbn: string, book: Book): Observable<Book> {
-    return this.http.patch<Book>(`http://localhost:4730/books/${isbn}`, book);
+    return this.http.patch<Book>(`${this._config.apiEndpoint}/${isbn}`, book);
   }
 
   removeBook(isbn: string): Observable<Book> {
-    return this.http.delete<Book>(`http://localhost:4730/books/${isbn}`);
+    return this.http.delete<Book>(`${this._config.apiEndpoint}/${isbn}`);
   }
 }
