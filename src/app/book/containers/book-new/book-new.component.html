@@ -24,6 +24,10 @@
   </mat-form-field>
   <br>
 
+  <button mat-raised-button (click)="undo()" type="button">
+    UNDO
+  </button>
+
   <button mat-raised-button [disabled]="form.invalid">
     SAVE
   </button>

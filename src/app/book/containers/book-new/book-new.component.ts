@@ -13,7 +13,8 @@ import { takeUntil } from 'rxjs/operators';
 import {
   CreateBook,
   RecoverDraftFromCache,
-  SaveDraft
+  SaveDraft,
+  UndoDraft
 } from '../../actions/create-book.actions';
 import * as fromBook from '../../reducers';
 import { BookDataService } from '../../shared/book-data.service';
@@ -51,6 +52,10 @@ export class BookNewComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this._onDestroy$.next();
     this._onDestroy$.complete();
+  }
+
+  undo() {
+    this._store.dispatch(new UndoDraft());
   }
 
   private _saveDraft(draft: Book) {
