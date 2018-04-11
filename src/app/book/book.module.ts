@@ -8,7 +8,8 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -40,6 +41,7 @@ import { CreateBookEffects } from './effects/create-book.effects';
     MatIconModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
 
     StoreModule.forFeature('bookShelf', reducers),
     EffectsModule.forFeature([BookCollectionEffects, CreateBookEffects]),

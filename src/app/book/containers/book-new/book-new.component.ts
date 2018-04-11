@@ -1,11 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Book } from 'models';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { CreateBook, RecoverDraftFromCache, SaveDraft } from '../../actions/create-book.actions';
+import {
+  CreateBook,
+  RecoverDraftFromCache,
+  SaveDraft
+} from '../../actions/create-book.actions';
 import * as fromBook from '../../reducers';
 import { BookDataService } from '../../shared/book-data.service';
 
@@ -25,6 +34,7 @@ export class BookNewComponent implements OnInit, OnDestroy {
     private bookService: BookDataService
   ) {
     this.form = this._declareForm();
+    this.form.valueChanges.subscribe(values => this._saveDraft(values));
 
     _store
       .pipe(
@@ -43,7 +53,7 @@ export class BookNewComponent implements OnInit, OnDestroy {
     this._onDestroy$.complete();
   }
 
-  saveDraft(draft: Book) {
+  private _saveDraft(draft: Book) {
     this._store.dispatch(new SaveDraft(draft));
   }
 
@@ -69,6 +79,8 @@ export class BookNewComponent implements OnInit, OnDestroy {
       },
       { updateOn: 'blur' }
     );
+
+    this.form.valueChanges.subscribe(values => this._saveDraft(values));
   }
 
   onSubmit() {

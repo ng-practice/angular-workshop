@@ -1,4 +1,7 @@
 <h2 class="mat-h2">ADD NEW BOOK</h2>
+
+<p>By pressing <code>TAB</code> a draft will automatically be cached for you. :-)</p>
+
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <input type="text" formControlName="isbn">
   <br>
@@ -20,10 +23,6 @@
     </textarea>
   </mat-form-field>
   <br>
-
-  <button mat-raised-button type="button" (click)="saveDraft(form.value)">
-    DRAFT
-  </button>
 
   <button mat-raised-button [disabled]="form.invalid">
     SAVE
