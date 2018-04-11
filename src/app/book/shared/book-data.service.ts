@@ -1,15 +1,20 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Book } from 'models';
 
+import { APP_CONFIG_TOKEN, AppConfig } from '../../core/app.config';
+
 @Injectable()
 export class BookDataService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    @Inject(APP_CONFIG_TOKEN) private _config: AppConfig
+  ) {}
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>('http://localhost:4730/books');
+    return this.http.get<Book[]>(this._config.apiEndpoint + '/books');
   }
 
   getBookByIsbn(isbn: string): Observable<Book> {

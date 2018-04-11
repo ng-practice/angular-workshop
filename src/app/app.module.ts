@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './reducers';
+import { ProvideAppConfig } from './core/app.config';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,7 @@ import { reducers, metaReducers } from './reducers';
     StoreDevtoolsModule.instrument(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ProvideAppConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
