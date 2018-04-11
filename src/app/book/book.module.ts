@@ -23,6 +23,7 @@ import { BookNewComponent } from './containers/book-new/book-new.component';
 import { BookCollectionEffects } from './effects/book-collection.effects';
 import { reducers } from './reducers';
 import { BookDataService } from './shared/book-data.service';
+import { LocalStorageModule } from '../lib/local-storage';
 
 @NgModule({
   imports: [
@@ -40,7 +41,9 @@ import { BookDataService } from './shared/book-data.service';
     MatProgressSpinnerModule,
 
     StoreModule.forFeature('bookShelf', reducers),
-    EffectsModule.forFeature([BookCollectionEffects])
+    EffectsModule.forFeature([BookCollectionEffects]),
+
+    LocalStorageModule
   ],
   declarations: [
     BookComponent,

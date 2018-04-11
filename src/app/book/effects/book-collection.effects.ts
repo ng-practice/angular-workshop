@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs/internal/observable/of';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import {
@@ -9,6 +8,7 @@ import {
   LoadSuccess
 } from '../actions/book-collection.actions';
 import { BookDataService } from '../shared/book-data.service';
+import { of } from 'rxjs';
 
 @Injectable()
 export class BookCollectionEffects {
