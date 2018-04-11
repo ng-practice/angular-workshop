@@ -23,8 +23,8 @@ export class BookListComponent implements OnInit {
     private _store: Store<fromBook.State>,
     private bookService: BookDataService
   ) {
-    this.hasFailed$ = _store.pipe(select(s => s.bookShelf.books.hasFailed));
-    this.isLoading$ = _store.pipe(select(s => s.bookShelf.books.isLoading));
+    this.hasFailed$ = _store.pipe(select(fromBook.hasFailed));
+    this.isLoading$ = _store.pipe(select(fromBook.isLoading));
     this.books$ = _store.pipe(select(fromBook.selectAll));
   }
 

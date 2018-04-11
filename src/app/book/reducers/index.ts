@@ -37,3 +37,19 @@ export const selectAll = createSelector(
   visitBookShelf,
   slice => slice.books.all
 );
+
+export const hasFailed = createSelector(
+  visitBookShelf,
+  slice => slice.books.hasFailed
+);
+
+export const isLoading = createSelector(
+  visitBookShelf,
+  slice => slice.books.isLoading
+);
+
+export const combineSelectAll = createSelector(
+  selectAll,
+  selectAll,
+  (b1, b2) => [...b1, ...b2]
+);
