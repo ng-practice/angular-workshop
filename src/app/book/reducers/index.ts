@@ -6,10 +6,12 @@ import {
 
 import * as fromRoot from '../../reducers';
 import * as fromBook from './book-collection.reducer';
+import * as fromBookDraft from './create-book.reducer';
 
 // API store.bookshelf.books.all -> Book[]
 export interface BookState {
   books: fromBook.BookSlice;
+  bookDraft: fromBookDraft.CreateBookSlice;
 }
 
 export interface State extends fromRoot.State {
@@ -18,7 +20,8 @@ export interface State extends fromRoot.State {
 }
 
 export const reducers: ActionReducerMap<BookState> = {
-  books: fromBook.reducer
+  books: fromBook.reducer,
+  bookDraft: fromBookDraft.reducer
 };
 
 /**
