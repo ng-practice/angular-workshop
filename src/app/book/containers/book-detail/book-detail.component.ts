@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'models';
 import { Observable } from 'rxjs';
@@ -8,7 +8,8 @@ import { BookDataService } from '../../shared/book-data.service';
 
 @Component({
   selector: 'book-detail',
-  templateUrl: 'book-detail.component.html'
+  templateUrl: 'book-detail.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookDetailComponent implements OnInit {
   book$: Observable<Book>;

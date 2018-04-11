@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Book } from 'models';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -12,7 +12,8 @@ import { Log, Load } from '../../actions/book-collection.actions';
 @Component({
   selector: 'book-list',
   templateUrl: 'book-list.component.html',
-  styles: ['mat-spinner { margin-left: auto; margin-right: auto; }']
+  styles: ['mat-spinner { margin-left: auto; margin-right: auto; }'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookListComponent implements OnInit {
   hasFailed$: Observable<boolean>;

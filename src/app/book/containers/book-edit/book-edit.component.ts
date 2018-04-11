@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Book } from 'models';
 import { ActivatedRoute } from '@angular/router';
 import { BookDataService } from '../../shared/book-data.service';
@@ -7,7 +7,8 @@ import { mergeMap } from 'rxjs/operators';
 @Component({
   selector: 'book-edit',
   templateUrl: './book-edit.component.html',
-  styleUrls: ['./book-edit.component.scss']
+  styleUrls: ['./book-edit.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookEditComponent implements OnInit {
   book: Book;
