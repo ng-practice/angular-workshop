@@ -6,6 +6,7 @@ import { BookEditComponent } from './book-edit/book-edit.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookNewComponent } from './book-new/book-new.component';
 import { BookComponent } from './book.component';
+import { EnsureBookExist } from './guards/ensure-book-exist.guard';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,7 @@ export const routes: Routes = [
       {
         path: ':isbn',
         component: BookDetailComponent,
+        canActivate: [EnsureBookExist]
       },
       {
         path: ':isbn/edit',
@@ -34,6 +36,7 @@ export const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [EnsureBookExist]
 })
 export class BookRoutingModule {}

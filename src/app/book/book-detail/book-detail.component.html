@@ -1,5 +1,10 @@
-<book-card [book]="book" *ngIf="book$ | async as book">
-  <a mat-button routerLink="edit">
-    EDIT
-  </a>
-</book-card>
+<mat-spinner *ngIf="isLoading$ | async">
+</mat-spinner>
+
+<ng-container *ngIf="isLoaded$ | async">
+  <book-card [book]="book$ | async">
+    <a mat-button routerLink="edit">
+      EDIT
+    </a>
+  </book-card>
+</ng-container>

@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { LayoutModule } from './layout/layout.module';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducers, metaReducers } from './reducers';
+import { metaReducers, reducers } from './reducers';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { reducers, metaReducers } from './reducers';
     LayoutModule,
 
     StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument(),
     AppRoutingModule
   ],

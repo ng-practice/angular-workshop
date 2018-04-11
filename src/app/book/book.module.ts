@@ -7,8 +7,11 @@ import {
   MatCardModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule
+  MatInputModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 import { BookCardComponent } from './book-card/book-card.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
@@ -17,9 +20,10 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookNewComponent } from './book-new/book-new.component';
 import { BookComponent } from './book.component';
 import { BookRoutingModule } from './book.routing';
-import { BookDataService } from './shared/book-data.service';
-import { StoreModule } from '@ngrx/store';
+import { BookEffects } from './effects/books.effects';
+import { SelectedBookEffects } from './effects/selected-books.effects';
 import { reducers } from './reducers';
+import { BookDataService } from './shared/book-data.service';
 
 @NgModule({
   imports: [
@@ -34,8 +38,10 @@ import { reducers } from './reducers';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatProgressSpinnerModule,
 
-    StoreModule.forFeature('bookShelf', reducers)
+    StoreModule.forFeature('bookShelf', reducers),
+    EffectsModule.forFeature([BookEffects, SelectedBookEffects])
   ],
   declarations: [
     BookComponent,
