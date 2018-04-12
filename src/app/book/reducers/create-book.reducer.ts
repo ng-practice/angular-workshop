@@ -24,7 +24,7 @@ export function reducer(slice = initialSlice, action: CreateBookActions) {
       };
     case CreateBookActionTypes.UndoDraft:
       const previous =
-        slice.pastDrafts[slice.pastDrafts.length - 2] || ({} as Book);
+        slice.pastDrafts[slice.pastDrafts.length - 1] || ({} as Book);
       const pastDrafts = slice.pastDrafts.slice(0, -1);
 
       return {
