@@ -4,6 +4,9 @@
 /dist
 /tmp
 
+# test-coverage
+coverage/
+
 # dependencies
 /node_modules
 
