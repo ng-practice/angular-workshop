@@ -7,9 +7,5 @@
     "types": ["jasmine", "node"]
   },
   "files": ["test.ts", "polyfills.ts"],
-  "include": ["**/*.spec.ts", "**/*.d.ts"],
-  "paths": {
-    "models": ["../dist/models"],
-    "g-rab": ["../dist/g-rab"]
-  }
+  "include": ["**/*.spec.ts", "**/*.d.ts"]
 }

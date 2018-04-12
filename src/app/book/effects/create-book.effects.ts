@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Book } from 'models';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { LocalStorage } from '../../lib/local-storage';
@@ -12,8 +11,9 @@ import {
   RecoverDraftFromCacheSuccess,
   RemoveDraft,
   SaveDraft,
-  SaveDraftSuccess,
+  SaveDraftSuccess
 } from '../actions/create-book.actions';
+import { Book } from '../models';
 import { BookDataService } from '../shared/book-data.service';
 
 @Injectable()

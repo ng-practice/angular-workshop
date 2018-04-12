@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Book } from 'models';
 import { Observable } from 'rxjs';
 
 import { APP_CONFIG_TOKEN, AppConfig } from '../../core/app.config';
+import { Book } from '../models';
 
 @Injectable()
 export class BookDataService {

@@ -1,5 +1,7 @@
 import { Action } from '@ngrx/store';
-import { Book } from 'models';
+
+import { Book } from '../models';
+
 
 export enum BookCollectionActionTypes {
   Log = '[Book-Collection] Log',

@@ -6,7 +6,6 @@ import {
   Validators
 } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
-import { Book } from 'models';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -16,6 +15,7 @@ import {
   SaveDraft,
   UndoDraft
 } from '../../actions/create-book.actions';
+import { Book } from '../../models';
 import * as fromBook from '../../reducers';
 import { BookDataService } from '../../shared/book-data.service';
 

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Book } from 'models';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { Book } from '../../models';
 
 @Component({
   selector: 'book-card',

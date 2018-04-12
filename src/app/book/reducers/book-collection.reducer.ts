@@ -1,6 +1,6 @@
-import { Book } from 'models';
-
 import { BookCollectionActions, BookCollectionActionTypes } from '../actions/book-collection.actions';
+import { Book } from '../models';
+
 
 
 export interface BookSlice {

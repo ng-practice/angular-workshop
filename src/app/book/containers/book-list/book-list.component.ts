@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Book } from 'models';
+import { Book } from '../../models';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 

@@ -1,8 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Book } from 'models';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BookDataService } from '../../shared/book-data.service';
 import { mergeMap } from 'rxjs/operators';
+
+import { Book } from '../../models';
+import { BookDataService } from '../../shared/book-data.service';
 
 @Component({
   selector: 'book-edit',

@@ -1,5 +1,7 @@
 import { Action } from '@ngrx/store';
-import { Book } from 'models';
+
+import { Book } from '../models';
+
 
 export enum CreateBookActionTypes {
   SaveDraft = '[CREATE BOOK] Save draft locally',

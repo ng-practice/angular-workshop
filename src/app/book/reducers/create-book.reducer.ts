@@ -1,9 +1,8 @@
-import { Book } from 'models';
-import { Action } from '@ngrx/store';
 import {
   CreateBookActions,
   CreateBookActionTypes
 } from '../actions/create-book.actions';
+import { Book } from '../models';
 
 export interface CreateBookSlice {
   draft: Book;

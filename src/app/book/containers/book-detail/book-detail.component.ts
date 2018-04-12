@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Book } from 'models';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
+import { Book } from '../../models';
 import { BookDataService } from '../../shared/book-data.service';
 
 @Component({

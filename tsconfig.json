@@ -15,14 +15,6 @@
     "lib": [
       "es2017",
       "dom"
-    ],
-    "paths": {
-      "models": [
-        "dist/models"
-      ],
-      "g-rab": [
-        "dist/g-rab"
-      ]
-    }
+    ]
   }
 }
