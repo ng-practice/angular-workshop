@@ -18,7 +18,7 @@ import { Log, Load } from '../../actions/book-collection.actions';
 export class BookListComponent implements OnInit {
   hasFailed$: Observable<boolean>;
   isLoading$: Observable<boolean>;
-  books$: Observable<Book[]>;
+  books$: Observable<Book[]|Error>;
 
   constructor(
     private _store: Store<fromBook.State>,

@@ -2,10 +2,15 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
-import { TestBed, fakeAsync } from '@angular/core/testing';
+import { fakeAsync, TestBed } from '@angular/core/testing';
 
+import {
+  APP_CONFIG_TOKEN,
+  AppConfig,
+  ProvideAppConfig
+} from '../../core/app.config';
+import { Book } from '../models';
 import { BookDataService } from './book-data.service';
-import { ProvideAppConfig, APP_CONFIG_TOKEN, AppConfig } from '../../core/app.config';
 
 describe('service: BookData', () => {
   let service: BookDataService;
@@ -24,15 +29,41 @@ describe('service: BookData', () => {
   });
 
   describe('When books are loaded succesfully', () => {
-    it('yields a list of books', fakeAsync(() => {
-      // Pending request
-      service.getBooks().subscribe(books => expect(books.length).toBe(0));
+    it(
+      'yields a list of books',
+      fakeAsync(() => {
+        // Pending request
+        service
+          .getBooks()
+          .subscribe((books: Book[]) => expect(books.length).toBe(0));
 
-      // Mock response
-      httpMock
-        .expectOne(`${config.apiEndpoint}/books`)
-        .flush([]);
-    }));
+        // Mock response
+        httpMock.expectOne(`${config.apiEndpoint}/books`).flush([]);
+      })
+    );
+  });
+
+  describe('When the API yields an error', () => {
+    it(
+      'should yield the error message "Sorry, we are not able to load any books right now."',
+      fakeAsync(() => {
+        service
+          .getBooks()
+          .subscribe(
+            () => {},
+            err =>
+              expect(err.message).toBe(
+                'Sorry, we are not able to load any books right now.'
+              )
+          );
+
+        httpMock
+          .expectOne(`${config.apiEndpoint}/books`)
+          .error(new ErrorEvent('not found'), {
+            statusText: 'An unexpected error occured!'
+          });
+      })
+    );
   });
 
   afterEach(() => httpMock.verify());

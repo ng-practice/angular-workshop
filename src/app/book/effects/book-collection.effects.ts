@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import {
@@ -7,8 +8,8 @@ import {
   LoadError,
   LoadSuccess
 } from '../actions/book-collection.actions';
+import { Book } from '../models';
 import { BookDataService } from '../shared/book-data.service';
-import { of } from 'rxjs';
 
 @Injectable()
 export class BookCollectionEffects {
@@ -19,7 +20,7 @@ export class BookCollectionEffects {
       this._books
         .getBooks()
         .pipe(
-          map(books => new LoadSuccess(books)),
+          map((books: Book[]) => new LoadSuccess(books)),
           catchError(err => of(new LoadError(err)))
         )
     )

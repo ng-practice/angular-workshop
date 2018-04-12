@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 import { APP_CONFIG_TOKEN, AppConfig } from '../../core/app.config';
 import { Book } from '../models';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class BookDataService {
@@ -12,8 +13,16 @@ export class BookDataService {
     @Inject(APP_CONFIG_TOKEN) private _config: AppConfig
   ) {}
 
-  getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this._config.apiEndpoint}/books`);
+  getBooks(): Observable<Book[] | Error> {
+    return this.http
+      .get<Book[]>(`${this._config.apiEndpoint}/books`)
+      .pipe(
+        catchError(() =>
+          throwError(
+            new Error('Sorry, we are not able to load any books right now.')
+          )
+        )
+      );
   }
 
   getBookByIsbn(isbn: string): Observable<Book> {
