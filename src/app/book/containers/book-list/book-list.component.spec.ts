@@ -1,5 +1,5 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { combineReducers, StoreModule } from '@ngrx/store';
 import { ZOMBIE_COMPILER_PROVIDERS } from 'ngx-zombie-compiler';
@@ -13,33 +13,38 @@ import { reducers as bookReducers } from '../../reducers';
 import { BookDataService } from '../../shared/book-data.service';
 import { BookDetailComponent } from '../book-detail/book-detail.component';
 import { BookListComponent } from './book-list.component';
+import { By } from '@angular/platform-browser';
+import { CommonModule, Location } from '@angular/common';
 
 describe('(component) BookList', () => {
-  const isbn = '234-24-32';
+  const book = G.rab(BookPlan).model({ isbn: '234-24-32' });
+
   let bookListFixture: ComponentFixture<BookListComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [BookListComponent, BookCardComponent, BookDetailComponent],
       imports: [
+        CommonModule,
         StoreModule.forRoot({
           ...reducers,
           feature: combineReducers(bookReducers)
         }),
         RouterTestingModule.withRoutes([
-          { path: 'books/:isbn', component: BookDetailComponent }
+          { path: ':isbn', component: BookDetailComponent }
         ])
       ],
       providers: [
+        Location,
         {
           provide: BookDataService,
           useFactory() {
             return {
               getBooks() {
-                return of([G.rab(BookPlan).model({ isbn })]);
+                return of([book]);
               },
               getByIsbn() {
-                return of(G.rab(BookPlan).model({ isbn }));
+                return of(book);
               }
             };
           }
@@ -53,8 +58,19 @@ describe('(component) BookList', () => {
       .compileComponents();
 
     bookListFixture = TestBed.createComponent(BookListComponent);
+    bookListFixture.componentInstance.books$ = of([book]);
+    bookListFixture.detectChanges();
   });
+
   describe('When clicking on a details link', () => {
-    it('should navigate to the details page', () => {});
+    it('should navigate to the details page', fakeAsync(() => {
+      const detailLink = bookListFixture.debugElement.query(By.css('[href]'));
+
+      detailLink.nativeElement.click();
+
+      tick();
+
+      expect(TestBed.get(Location).path()).toBe(`/${book.isbn}`);
+    }));
   });
 });
