@@ -7,16 +7,23 @@ import { LocalStorage } from './local-storage';
 import { Modal } from './modal/modal';
 import { ModalCleanser } from './modal/modal-cleanser';
 import { ModalComponent } from './modal/modal.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 @NgModule({
-  imports: [
-    CommonModule,
-
-    MatButtonModule,
-    MatCardModule
-  ],
+  imports: [CommonModule, MatButtonModule, MatCardModule],
   declarations: [ModalComponent],
   entryComponents: [ModalComponent],
-  providers: [LocalStorage, Modal, ModalCleanser, HostElementProvider]
+  providers: [
+    LocalStorage,
+    Modal,
+    ModalCleanser,
+    HostElementProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ]
 })
-export class LibModule { }
+export class LibModule {}

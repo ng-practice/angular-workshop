@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './reducers';
 import { ProvideAppConfig } from './core/app.config';
+import { LibModule } from './lib/lib.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { ProvideAppConfig } from './core/app.config';
     FormsModule,
     HttpClientModule,
     LayoutModule,
+    LibModule,
 
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([]),

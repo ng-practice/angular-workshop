@@ -14,7 +14,6 @@ import {
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { LibModule } from '../lib/lib.module';
 import { BookComponent } from './book.component';
 import { BookRoutingModule } from './book.routing';
 import { BookCardComponent } from './components/book-card/book-card.component';
@@ -44,9 +43,7 @@ import { BookDataService } from './shared/book-data.service';
     MatSnackBarModule,
 
     StoreModule.forFeature('bookShelf', reducers),
-    EffectsModule.forFeature([BookCollectionEffects, CreateBookEffects]),
-
-    LibModule
+    EffectsModule.forFeature([BookCollectionEffects, CreateBookEffects])
   ],
   declarations: [
     BookComponent,
