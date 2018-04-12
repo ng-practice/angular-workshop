@@ -1,7 +1,5 @@
 import { Actions } from '@ngrx/effects';
-import { ReplaySubject, Observable, of } from 'rxjs';
-
-import { _throw } from 'rxjs/observable/throw';
+import { ReplaySubject, Observable, of, throwError } from 'rxjs';
 
 import {
   Load,
@@ -47,7 +45,7 @@ describe('effect: book-collection', () => {
       actions$ = new Actions(loadAction$);
 
       // Second dep for effect
-      service = stubBookDataService(_throw(new Error()));
+      service = stubBookDataService(throwError(new Error()));
 
       effects = new BookCollectionEffects(actions$, service);
     });
