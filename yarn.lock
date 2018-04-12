@@ -6423,6 +6423,10 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
+rxjs-compat@^6.0.0-beta.1:
+  version "6.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/rxjs-compat/-/rxjs-compat-6.0.0-beta.1.tgz#ef7289354600f139253f719cbb2f0a6b2d572108"
+
 rxjs@^5.0.0-beta.11:
   version "5.5.8"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.8.tgz#b2b0809a57614ad6254c03d7446dea0d83ca3791"
@@ -6435,7 +6439,7 @@ rxjs@^5.5.0:
   dependencies:
     symbol-observable "1.0.1"
 
-rxjs@^6.0.0-beta.3:
+rxjs@^6.0.0-beta.3, rxjs@^6.0.0rc.3:
   version "6.0.0-terrific-rc.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.0.0-terrific-rc.3.tgz#3acee937c1789ee4addf3cc3f7cc843d7cc2887c"
   dependencies:
