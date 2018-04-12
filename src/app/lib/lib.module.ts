@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { MatButtonModule, MatCardModule } from '@angular/material';
 
 import { HostElementProvider } from './host-element/host-element.provider';
@@ -9,6 +9,8 @@ import { ModalCleanser } from './modal/modal-cleanser';
 import { ModalComponent } from './modal/modal.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+
+import { GlobalErrorHandler } from './global-errors/global-error.handler';
 
 @NgModule({
   imports: [CommonModule, MatButtonModule, MatCardModule],
@@ -23,6 +25,13 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true
+    },
+    {
+      provide: ErrorHandler,
+      useFactory(modal, cleanser) {
+        return new GlobalErrorHandler(modal, cleanser);
+      },
+      deps: [Modal, ModalCleanser]
     }
   ]
 })
