@@ -9,6 +9,7 @@ import {
 } from '../actions/book-collection.actions';
 import { BookDataService } from '../shared/book-data.service';
 import { BookCollectionEffects } from './book-collection.effects';
+import { fakeAsync } from '@angular/core/testing';
 
 describe('effect: book-collection', () => {
   let loadAction$: ReplaySubject<Load>;
@@ -16,7 +17,6 @@ describe('effect: book-collection', () => {
   let service: BookDataService;
   let effects: BookCollectionEffects;
   describe('When the books are loaded successfully', () => {
-
     beforeEach(() => {
       loadAction$ = new ReplaySubject(1);
       loadAction$.next(new Load());
@@ -52,12 +52,14 @@ describe('effect: book-collection', () => {
       effects = new BookCollectionEffects(actions$, service);
     });
 
-    it('should yield a LoadError Action', done => {
-      effects.load.subscribe(action => {
-        expect(action.type).toBe(BookCollectionActionTypes.LoadError);
-        done();
-      });
-    });
+    it(
+      'should yield a LoadError Action',
+      fakeAsync(() => {
+        effects.load.subscribe(action =>
+          expect(action.type).toBe(BookCollectionActionTypes.LoadError)
+        );
+      })
+    );
   });
 });
 
